@@ -26,7 +26,7 @@
 					<div class="form-group row">
 						<label style="color: #020202;" for="idBuku" class="col-sm-2 col-form-label">ID Buku</label>
 						<div class="col-sm-10">
-						<input style="color: #020202;" type="text" name="id_buku" class="form-control" id="idBuku" placeholder="Masukkan judul buku">
+						<input style="color: #020202;" type="text" name="id_buku" class="form-control" id="idBuku" placeholder="Masukkan ID buku">
 						</div>
 					</div>
 					<div class="form-group row">

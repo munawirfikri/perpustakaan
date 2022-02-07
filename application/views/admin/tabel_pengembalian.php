@@ -20,6 +20,8 @@
 			<th>Tgl Peminjaman</th>
 			<th>Tgl Pengembalian</th>
 			<th>Status</th>
+			<th>Denda</th>
+			<th>Aksi</th>
 		  </tr>
 		</thead>
 		<tfoot>
@@ -29,21 +31,84 @@
 			<th>Tgl Peminjaman</th>
 			<th>Tgl Pengembalian</th>
 			<th>Status</th>
+			<th>Denda</th>
+			<th>Aksi</th>
 		  </tr>
 		</tfoot>
 		<tbody>
 			<!-- begin foreach -->
+			<?php foreach($pengembalian as $row) : ?>
 			<tr>
-				<td>Farah</td>
-				<td>Kata</td>
-				<td>18/01/2022</td>
-				<td>-</td>
+				<td><?= $row['nama']; ?></td>
+				<td><?= $row['judul']; ?></td>
+				<td><?= $row['tgl_peminjaman']; ?></td>
+				<td><?= $row['tgl_pengembalian']; ?></td>
+				<?php if($row['status'] == 0) : ?>
+						<td>Belum Selesai</td>
+					<?php endif; ?>
+				<?php if($row['status'] != 0) : ?>
+					<td>Selesai</td>
+					<?php endif; ?>
 				<td>
-					<a style="color: black" href="<?= base_url('admin/rekapan_pengembalian'); ?>" class="btn btn-success" > </a>
-					<a style="color: black" href="<?= base_url('admin/denda'); ?>" class="btn btn-danger" > </a>
+				<?php
+					$begin = new DateTime($row['tgl_pengembalian']);
+					$end = new DateTime('now');
+
+					$daterange     = new DatePeriod($begin, new DateInterval('P1D'), $end);
+					//mendapatkan range antara dua tanggal dan di looping
+					$i=0;
+					$x     =    0;
+					$end     =    1;
+
+					foreach($daterange as $date){
+						$daterange     = $date->format("Y-m-d");
+						$datetime     = DateTime::createFromFormat('Y-m-d', $daterange);
+
+						//Convert tanggal untuk mendapatkan nama hari
+						$day         = $datetime->format('D');
+
+						//Check untuk menghitung yang bukan hari sabtu dan minggu
+						if($day!="Sun" && $day!="Sat") {
+							//echo $i;
+							$x    +=    $end-$i;
+							
+						}
+						$end++;
+						$i++;
+					} 
+					if($x==0){
+						$selisih = $x;
+					}else{
+						$selisih = $x-1;
+					}
+					
+					if($row['status'] == 0){
+						if($selisih!=0){
+							$nilai_denda = "Rp." .$selisih * 1000;
+							echo "<h6 class='text-danger'> $nilai_denda </h6>" ;
+						}else{
+							echo "-";
+						}
+					}else{
+						echo "-";
+					}
+					?>
+				</td>
+				<td> 
+					<?php if($row['status'] == 0) : ?>
+					<a href="<?= base_url('admin/updatepengembalian'); ?>?status=<?= $row['status']; ?>&id=
+					<?= $row['id_peminjaman']; ?>
+					">&#10003;</a>
+					<?php endif; ?>
+					<?php if($row['status'] != 0) : ?>
+					<a href="<?= base_url('admin/updatepengembalian'); ?>?status=<?= $row['status']; ?>&id=
+					<?= $row['id_peminjaman']; ?>
+					">&#88;</a>
+					<?php endif; ?>
 				</td>
 			</tr>
 			<!-- endfoeach -->
+			<?php endforeach; ?>
 		</tbody>
 	  </table>
 	</div>

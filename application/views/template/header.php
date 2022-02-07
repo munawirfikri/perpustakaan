@@ -17,7 +17,8 @@
 
   <!-- Custom styles for this template-->
   <link href="<?= base_url('assets'); ?>/css/sb-admin-2.min.css" rel="stylesheet">
-
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	
 </head>
 
 <body id="page-top">
@@ -39,8 +40,8 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-text mx-3">Administrator</div>
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('admin'); ?>">
+        <div class="sidebar-brand-text mx-3">SDN 04 Minas Jaya</div>
       </a>
 
       <!-- Divider -->

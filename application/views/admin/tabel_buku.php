@@ -8,44 +8,46 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-	<h6 style="color: maroon;" class="m-0 font-weight-bold">Rekapan Buku</h6>
+	<h6 style="color: maroon;" class="m-0 font-weight-bold">Rekapan Buku</h6><a href="<?= base_url('admin/tambahbuku'); ?>">+ Tambah Buku</a>
   </div>
   <div class="card-body">
 	<div class="table-responsive">
 	  <table class="table table-bordered" style="color: black;" id="dataTable" width="100%" cellspacing="0">
 	  	<thead>
 		  <tr>
-			<th>Nama Peminjam</th>
+			<th>ID</th>
 			<th>Judul Buku</th>
-			<th>Tgl Peminjaman</th>
-			<th>Tgl Pengembalian</th>
-			<th>Ket</th>
+			<th>Penerbit</th>
+			<th>Tahun Terbit</th>
+			<th>ISBN</th>
 		  </tr>
 		</thead>
 		<tfoot>
 		<tr>
-			<th>Nama Peminjam</th>
+			<th>ID</th>
 			<th>Judul Buku</th>
-			<th>Tgl Peminjaman</th>
-			<th>Tgl Pengembalian</th>
-			<th>Ket</th>
+			<th>Penerbit</th>
+			<th>Tahun Terbit</th>
+			<th>ISBN</th>
 		  </tr>
 		</tfoot>
 		<tbody>
 			<!-- begin foreach -->
+			<?php foreach($buku as $row) : ?>
 			<tr>
-				<td>Farah</td>
-				<td>Kata</td>
-				<td>18/01/2022</td>
-				<td>-</td>
-				<td>-</td>
+				<td><?= $row['id_buku'] ?></td>
+				<td><?= $row['judul'] ?></td>
+				<td><?= $row['nm_penerbit'] ?></td>
+				<td><?= $row['thn_terbit'] ?></td>
+				<td><?= $row['isbn'] ?></td>
 			</tr>
+			<?php endforeach; ?>
 			<!-- endfoeach -->
 		</tbody>
 	  </table>
 	</div>
 	<div class="row">
-		<a href="#" class="mt-3 col-lg-12 text-center btn btn-primary">Cetak</a>
+		<a href="<?= base_url('admin/cetakrekapanbuku'); ?>" class="mt-3 col-lg-12 text-center btn btn-primary">Cetak</a>
 	</div>
   </div>
 </div>

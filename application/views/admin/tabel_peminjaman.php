@@ -33,7 +33,7 @@
 		</tfoot>
 		<tbody>
 			<!-- begin foreach -->
-			<?php foreach($_SESSION['rekapan_peminjaman'] as $row) : ?>
+			<?php foreach($rekapan_peminjaman as $row) : ?>
 			<tr>
 				<td><?= $row['nama']; ?></td>
 				<td><?= $row['judul']; ?></td>
@@ -41,8 +41,13 @@
 				<td><?= $row['tgl_pengembalian']; ?></td>
 				<td>
 					<a style="color: black" href="#" class="badge badge-warning" >Notifikasi</a> |
-					<a style="color: white" href="#" class="badge badge-primary" >Cetak</a> |
-					<a style="color: white" href="#" class="badge badge-danger" >Hapus</a>
+					<a style="color: white" 
+						href="<?= base_url('admin/cetakpeminjamansatuan'); ?>?id=<?= $row['id_peminjaman']; ?>" 
+						class="badge badge-primary" >Cetak</a> |
+					<a style="color: white" 
+						href="<?= base_url('admin/hapuspeminjaman'); ?>?id=<?= $row['id_peminjaman']; ?>" 
+						class="badge badge-danger"
+						onclick="return confirm('Sudah Oke ingin menghapus data ini?')" >Hapus</a>
 				</td>
 			</tr>
 			<!-- endfoeach -->
@@ -50,8 +55,9 @@
 		</tbody>
 	  </table>
 	</div>
+
 	<div class="row">
-		<a href="#" class="mt-3 col-lg-12 text-center btn btn-primary">Cetak</a>
+		<a href="<?= base_url('admin/cetakrekapanpinjaman'); ?>" class="mt-3 col-lg-12 text-center btn btn-primary">Cetak</a>
 	</div>
   </div>
 </div>

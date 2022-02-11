@@ -94,7 +94,7 @@
 		<hr class="sidebar-divider">
 
 		      <!-- Divider -->
-			  <hr class="sidebar-divider my-0">
+		<hr class="sidebar-divider my-0">
 
 		<!-- Nav Item - Dashboard -->
 		      <li class="nav-item"
@@ -109,6 +109,23 @@
 
 		<!-- Divider -->
 		<hr class="sidebar-divider">
+
+			<!-- Divider -->
+			<hr class="sidebar-divider my-0">
+
+			<!-- Nav Item - Dashboard -->
+						<li class="nav-item"
+				<?php if($url == base_url('admin/pengguna')) { ?>
+				style="background-color: salmon;"			
+				<?php } ?>
+				>
+
+			<a class="text-center nav-link" href="<?= base_url('admin/pengguna'); ?>">
+				<span>Pengguna</span></a>
+			</li>
+
+			<!-- Divider -->
+			<hr class="sidebar-divider">
 
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
@@ -151,7 +168,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Perpustakaan SDN 04 Minas Jaya</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Hai, <?= $_SESSION['nama']; ?>!</span>
                 <img width="50px" class="rounded-circle" src="<?= base_url('assets'); ?>/img/logo.png">
               </a>
               <!-- Dropdown - User Information -->

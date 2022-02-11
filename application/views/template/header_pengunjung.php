@@ -105,7 +105,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Perpustakaan SDN 04 Minas Jaya</span>
+							<span class="mr-2 d-none d-lg-inline text-gray-600 small">Hai, <?= $_SESSION['nama']; ?>!</span>
                 <img width="50px" class="rounded-circle" src="<?= base_url('assets'); ?>/img/logo.png">
               </a>
               <!-- Dropdown - User Information -->

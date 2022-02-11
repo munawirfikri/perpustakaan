@@ -96,13 +96,13 @@
 				</td>
 				<td> 
 					<?php if($row['status'] == 0) : ?>
-					<a href="<?= base_url('admin/updatepengembalian'); ?>?status=<?= $row['status']; ?>&id=
-					<?= $row['id_peminjaman']; ?>
+					<a onclick="return confirm('Update data ini?')" href="<?= base_url('admin/updatepengembalian'); ?>?status=<?= $row['status']; ?>&id=
+					<?= $row['id_peminjaman']; ?>&denda=<?= $selisih*1000; ?>
 					">&#10003;</a>
 					<?php endif; ?>
 					<?php if($row['status'] != 0) : ?>
-					<a href="<?= base_url('admin/updatepengembalian'); ?>?status=<?= $row['status']; ?>&id=
-					<?= $row['id_peminjaman']; ?>
+					<a onclick="return confirm('Update data ini?')" href="<?= base_url('admin/updatepengembalian'); ?>?status=<?= $row['status']; ?>&id=
+					<?= $row['id_peminjaman']; ?>&denda=<?= $selisih*1000; ?>
 					">&#88;</a>
 					<?php endif; ?>
 				</td>

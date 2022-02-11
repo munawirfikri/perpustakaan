@@ -201,10 +201,14 @@ class Admin extends CI_Controller
 	{
 		$status = $_GET['status'];
 		$id = $_GET['id'];
+		$denda = $_GET['denda'];
 
 		if(isset($status) && isset($id)){
 			if($status==0){
 				$this->db->query("UPDATE peminjaman SET status=1 WHERE id_peminjaman = $id");
+				if($denda>0){
+					$this->db->query("REPLACE INTO denda VALUE ($id, $denda, now());");
+				}
 			}else{
 				$this->db->query("UPDATE peminjaman SET status=0 WHERE id_peminjaman = $id");
 			}
@@ -221,10 +225,46 @@ class Admin extends CI_Controller
 
 	public function denda()
 	{
+		$denda = $this->db->query("SELECT pengguna.nama, buku.judul, denda.tgl_bayar, denda.jlh_denda FROM denda, pengguna, buku, peminjaman WHERE pengguna.id_pengguna = peminjaman.id_pengunjung AND buku.id_buku = peminjaman.id_buku AND denda.id_peminjaman = peminjaman.id_peminjaman")->result();
+		$rekapan_denda = json_decode(json_encode($denda), True);
+		$data['denda'] = $rekapan_denda;
+
 		$this->load->view('template/header');
-		$this->load->view('admin/tabel_denda');
+		$this->load->view('admin/tabel_denda', $data);
 		$this->load->view('template/footer');
 	}
+
+	public function cetakrekapandenda()
+    {
+		$denda = $this->db->query("SELECT pengguna.nama, buku.judul, denda.tgl_bayar, denda.jlh_denda FROM denda, pengguna, buku, peminjaman WHERE pengguna.id_pengguna = peminjaman.id_pengunjung AND buku.id_buku = peminjaman.id_buku AND denda.id_peminjaman = peminjaman.id_peminjaman")->result();
+		$datadenda = json_decode(json_encode($denda), True);
+
+        $hari_ini = date("d-m-Y");
+		// panggil library yang kita buat sebelumnya yang bernama pdfgenerator
+        $this->load->library('pdfgenerator');
+
+		$hari = $this->_hariini() . ", " . $hari_ini;
+        // Data
+		
+		$data = [
+			'title_pdf' => "Laporan Rekapan Riwayat Denda Perpustakaan SDN 04 Minas Jaya $hari_ini",
+			'hari' => $hari,
+			'denda' => $datadenda
+		];
+
+        // filename dari pdf ketika didownload
+		
+        $file_pdf = "Laporan Rekapan Denda Perpustakaan $hari_ini";
+        // setting paper
+        $paper = 'A4';
+        //orientasi paper potrait / landscape
+        $orientation = "portrait";
+        
+		$html = $this->load->view('admin/laporan/rekapan_denda',$data, true);	    
+        
+        // run dompdf
+        $this->pdfgenerator->generate($html, $file_pdf,$paper,$orientation);
+    }
 
 	public function buku()
 	{
@@ -298,5 +338,82 @@ class Admin extends CI_Controller
         // run dompdf
         $this->pdfgenerator->generate($html, $file_pdf,$paper,$orientation);
     }
+
+	public function pengguna()
+	{
+		$pengguna = $this->db->query("SELECT * FROM pengguna")->result();
+		$daftar_pengguna = json_decode(json_encode($pengguna), True);
+		$data['pengguna'] = $daftar_pengguna;
+
+		$this->load->view('template/header');
+		$this->load->view('admin/tabel_pengguna', $data);
+		$this->load->view('template/footer');
+	}
+
+	public function tambahpengguna()
+	{
+		$this->load->view('template/header');
+		$this->load->view('admin/tambah_pengguna');
+		$this->load->view('template/footer');
+
+		if(isset($_POST['submit'])){
+
+			$nama = $_POST['nama'];
+			$username = $_POST['username'];
+			$password = $_POST['password'];
+			$tipe_user = $_POST['tipe_user'];
+
+			// $this->db->db_debug = false;
+
+			$query = $this->db->query("INSERT INTO pengguna values('','$nama','$username', '$password', '$tipe_user');");
+			
+			if($query){
+				redirect ('admin/pengguna');
+			}else{
+				echo '<script type ="text/JavaScript">';  
+				echo 'alert("Data tidak berhasil di inputkan")';  
+				echo '</script>';  
+			}
+			
+		}
+	}
+
+	public function cetakdaftarpengguna()
+    {
+		$pengguna = $this->db->query("SELECT * FROM pengguna")->result();
+		$datapengguna = json_decode(json_encode($pengguna), True);
+
+        $hari_ini = date("d-m-Y");
+		// panggil library yang kita buat sebelumnya yang bernama pdfgenerator
+        $this->load->library('pdfgenerator');
+
+		$hari = $this->_hariini() . ", " . $hari_ini;
+        // Data
+		
+		$data = [
+			'title_pdf' => "Laporan Daftar Pengguna Perpustakaan SDN 04 Minas Jaya $hari_ini",
+			'hari' => $hari,
+			'pengguna' => $datapengguna
+		];
+
+        // filename dari pdf ketika didownload
+		
+        $file_pdf = "Laporan Daftar Pengguna Perpustakaan $hari_ini";
+        // setting paper
+        $paper = 'A4';
+        //orientasi paper potrait / landscape
+        $orientation = "portrait";
+        
+		$html = $this->load->view('admin/laporan/daftar_pengguna',$data, true);	    
+        
+        // run dompdf
+        $this->pdfgenerator->generate($html, $file_pdf,$paper,$orientation);
+    }
+
+	public function hapuspengguna(){
+		$id = $_GET['id'];
+		$this->db->delete('pengguna', array('id_pengguna' => $id)); 
+		redirect ('admin/pengguna');
+	}
 
 }

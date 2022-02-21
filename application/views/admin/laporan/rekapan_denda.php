@@ -31,6 +31,7 @@
     </head>
     <body>
         <div style="text-align:center">
+			<img style="max-width: 100px;" src="<?= $logo; ?>" alt="">
             <h3> Laporan Rekapan Denda <br> Perpustakaan SDN 04 Minas Jaya</h3>
 			<h4><?= $hari; ?></h4>
         </div>

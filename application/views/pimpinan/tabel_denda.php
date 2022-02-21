@@ -17,35 +17,34 @@
 		  <tr>
 			<th>Nama Peminjam</th>
 			<th>Judul Buku</th>
-			<th>Tgl Peminjaman</th>
 			<th>Tgl Pengembalian</th>
-			<th>Ket</th>
+			<th>Jumlah Denda</th>
 		  </tr>
 		</thead>
 		<tfoot>
 		<tr>
 			<th>Nama Peminjam</th>
 			<th>Judul Buku</th>
-			<th>Tgl Peminjaman</th>
 			<th>Tgl Pengembalian</th>
-			<th>Ket</th>
+			<th>Jumlah Denda</th>
 		  </tr>
 		</tfoot>
 		<tbody>
 			<!-- begin foreach -->
+			<?php foreach($denda as $row): ?>
 			<tr>
-				<td>Farah</td>
-				<td>Kata</td>
-				<td>18/01/2022</td>
-				<td>-</td>
-				<td><a class="badge badge-success" href="#">Selesai</a></td>
+				<td><?= $row['nama']; ?></td>
+				<td><?= $row['judul']; ?></td>
+				<td><?= $row['tgl_bayar']; ?></td>
+				<td>Rp.<?= $row['jlh_denda']; ?></td>
 			</tr>
+			<?php endforeach; ?>
 			<!-- endfoeach -->
 		</tbody>
 	  </table>
 	</div>
 	<div class="row">
-		<a href="#" class="mt-3 col-lg-12 text-center btn btn-primary">Cetak</a>
+		<a href="<?= base_url('admin/cetakrekapandenda'); ?>" class="mt-3 col-lg-12 text-center btn btn-primary">Cetak</a>
 	</div>
   </div>
 </div>

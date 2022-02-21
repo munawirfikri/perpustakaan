@@ -15,20 +15,18 @@
 	  <table class="table table-bordered" style="color: black;" id="dataTable" width="100%" cellspacing="0">
 	  	<thead>
 		  <tr>
-			<th>ID</th>
+			<th>ISBN</th>
 			<th>Judul Buku</th>
 			<th>Penerbit</th>
 			<th>Tahun Terbit</th>
-			<th>ISBN</th>
 		  </tr>
 		</thead>
 		<tfoot>
 		<tr>
-			<th>ID</th>
+			<th>ISBN</th>
 			<th>Judul Buku</th>
 			<th>Penerbit</th>
 			<th>Tahun Terbit</th>
-			<th>ISBN</th>
 		  </tr>
 		</tfoot>
 		<tbody>
@@ -37,9 +35,8 @@
 			<tr>
 				<td><?= $row['id_buku'] ?></td>
 				<td><?= $row['judul'] ?></td>
-				<td><?= $row['nm_penerbit'] ?></td>
+				<td><?= $row['penerbit'] ?></td>
 				<td><?= $row['thn_terbit'] ?></td>
-				<td><?= $row['isbn'] ?></td>
 			</tr>
 			<?php endforeach; ?>
 			<!-- endfoeach -->

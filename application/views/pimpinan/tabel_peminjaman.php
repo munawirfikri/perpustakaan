@@ -8,7 +8,7 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-	<h6 style="color: maroon;" class="font-weight-bold">Rekapan Peminjaman</h6><a href="<?= base_url('admin/tambahpeminjaman'); ?>">+ Tambah Data</a>
+	<h6 style="color: maroon;" class="font-weight-bold">Rekapan Peminjaman</h6>
   </div>
   <div class="card-body">
 	<div class="table-responsive">
@@ -40,14 +40,9 @@
 				<td><?= $row['tgl_peminjaman']; ?></td>
 				<td><?= $row['tgl_pengembalian']; ?></td>
 				<td>
-					<a style="color: black" href="#" class="badge badge-warning" >Notifikasi</a> |
 					<a style="color: white" 
 						href="<?= base_url('admin/cetakpeminjamansatuan'); ?>?id=<?= $row['id_peminjaman']; ?>" 
-						class="badge badge-primary" >Cetak</a> |
-					<a style="color: white" 
-						href="<?= base_url('admin/hapuspeminjaman'); ?>?id=<?= $row['id_peminjaman']; ?>" 
-						class="badge badge-danger"
-						onclick="return confirm('Sudah Oke ingin menghapus data ini?')" >Hapus</a>
+						class="btn btn-primary" >Cetak</a>
 				</td>
 			</tr>
 			<!-- endfoeach -->

@@ -21,7 +21,6 @@
 			<th>Tgl Pengembalian</th>
 			<th>Status</th>
 			<th>Denda</th>
-			<th>Aksi</th>
 		  </tr>
 		</thead>
 		<tfoot>
@@ -32,7 +31,6 @@
 			<th>Tgl Pengembalian</th>
 			<th>Status</th>
 			<th>Denda</th>
-			<th>Aksi</th>
 		  </tr>
 		</tfoot>
 		<tbody>
@@ -93,18 +91,6 @@
 						echo "-";
 					}
 					?>
-				</td>
-				<td> 
-					<?php if($row['status'] == 0) : ?>
-					<a href="<?= base_url('admin/updatepengembalian'); ?>?status=<?= $row['status']; ?>&id=
-					<?= $row['id_peminjaman']; ?>
-					">&#10003;</a>
-					<?php endif; ?>
-					<?php if($row['status'] != 0) : ?>
-					<a href="<?= base_url('admin/updatepengembalian'); ?>?status=<?= $row['status']; ?>&id=
-					<?= $row['id_peminjaman']; ?>
-					">&#88;</a>
-					<?php endif; ?>
 				</td>
 			</tr>
 			<!-- endfoeach -->

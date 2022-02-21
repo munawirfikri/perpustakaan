@@ -122,11 +122,12 @@ class Admin extends CI_Controller
 
 		$hari = $this->_hariini() . ", " . $hari_ini;
         // Data
-		
+		$logo = base_url('assets/img/logo.png');
 		$data = [
 			'title_pdf' => "Laporan Rekapan Data Peminjaman Perpustakaan SDN 04 Minas Jaya $hari_ini",
 			'hari' => $hari,
-			'rekapan_peminjaman' => $datapeminjaman
+			'rekapan_peminjaman' => $datapeminjaman,
+			'logo' => $logo
 		];
 
         // filename dari pdf ketika didownload
@@ -147,12 +148,13 @@ class Admin extends CI_Controller
     {
 		$id = $_GET['id'];
 
-		$peminjaman = $this->db->query("SELECT peminjaman.id_peminjaman, pengguna.nama, buku.judul, peminjaman.tgl_peminjaman, peminjaman.tgl_pengembalian, peminjaman.status
+		$peminjaman = $this->db->query("SELECT peminjaman.id_peminjaman, pengguna.nama, buku.id_buku, buku.judul, peminjaman.tgl_peminjaman, peminjaman.tgl_pengembalian, peminjaman.status, pengguna.id_kelas, pengguna.id_pengguna
         FROM pengguna, buku, peminjaman
         WHERE peminjaman.id_pengunjung = pengguna.id_pengguna AND peminjaman.id_buku = buku.id_buku AND peminjaman.id_peminjaman = $id
 		")->result();
 		$datapeminjaman = json_decode(json_encode($peminjaman), True);
-
+		$logo = base_url('assets/img/logo.png');
+		$admin = $_SESSION['nama'];
 		if(isset($id)){
 			$hari_ini = date("d-m-Y");
 			// panggil library yang kita buat sebelumnya yang bernama pdfgenerator
@@ -164,12 +166,14 @@ class Admin extends CI_Controller
 			$data = [
 				'title_pdf' => "Informasi Peminjaman Perpustakaan SDN 04 Minas Jaya $hari_ini",
 				'hari' => $hari,
-				'peminjaman' => $datapeminjaman[0]
+				'peminjaman' => $datapeminjaman[0],
+				'logo' => $logo,
+				'admin' => $admin
 			];
 	
 			// filename dari pdf ketika didownload
 			
-			$file_pdf = "Laporan Pinjaman Perpustakaan $hari_ini";
+			$file_pdf = "Bukti Peminjaman Perpustakaan $hari_ini";
 			// setting paper
 			$paper = 'A4';
 			//orientasi paper potrait / landscape
@@ -182,6 +186,47 @@ class Admin extends CI_Controller
 		}
  
     }
+
+	public function notifikasipeminjaman()
+	{
+		if(isset($_GET['id'])){
+			$id = $_GET['id'];
+
+			$peminjaman = $this->db->query("SELECT peminjaman.id_peminjaman, pengguna.nama, pengguna.id_kelas, pengguna.id_pengguna, buku.judul, peminjaman.tgl_peminjaman, peminjaman.tgl_pengembalian, peminjaman.status, walas.nama AS nama_walas
+			FROM pengguna, buku, peminjaman, kelas, walas
+			WHERE peminjaman.id_pengunjung = pengguna.id_pengguna AND peminjaman.id_buku = buku.id_buku AND pengguna.id_kelas = kelas.id_kelas AND kelas.id_walas = walas.id_walas AND peminjaman.id_peminjaman = $id
+			")->result();
+			$peminjaman = json_decode(json_encode($peminjaman), True);
+
+			$datapeminjaman = $peminjaman[0];
+			$siswa = $datapeminjaman['nama'];
+			$judul = $datapeminjaman['judul'];
+			$tgl_kembali = $datapeminjaman['tgl_pengembalian'];
+			$walas = $datapeminjaman['nama_walas'];
+			$nis = $datapeminjaman['id_pengguna'];
+			$kelas = $datapeminjaman['id_kelas'];
+			
+
+			$token = "5299805331:AAGgUgICY9gEwfn-o5F_r-USxCspA2hKcCk"; // token bot
+		
+			$text = "Assalamu'alaikum, izin menginfokan kepada bapak/ibuk atas nama $walas. bahwasanya:
+
+			Nama siswa: $siswa
+			NIS: $nis
+			Kelas: $kelas
+
+			Meminjam buku dengan judul $judul. Agar sekiranya mengingatkan, batas peminjaman hingga tanggal $tgl_kembali. Terimakasih!";
+
+			$data = [
+				'text' => $text,
+				'chat_id' => '-767947488', //contoh bot, group id -442697126
+			];
+			
+			file_get_contents("https://api.telegram.org/bot$token/sendMessage?" . http_build_query($data) );	
+		}
+		redirect('admin/peminjaman');
+		
+	}
 
 	public function pengembalian()
 	{
@@ -245,11 +290,13 @@ class Admin extends CI_Controller
 
 		$hari = $this->_hariini() . ", " . $hari_ini;
         // Data
-		
+		$logo = base_url('assets/img/logo.png');
+
 		$data = [
 			'title_pdf' => "Laporan Rekapan Riwayat Denda Perpustakaan SDN 04 Minas Jaya $hari_ini",
 			'hari' => $hari,
-			'denda' => $datadenda
+			'denda' => $datadenda,
+			'logo' => $logo
 		];
 
         // filename dari pdf ketika didownload
@@ -318,11 +365,12 @@ class Admin extends CI_Controller
 
 		$hari = $this->_hariini() . ", " . $hari_ini;
         // Data
-		
+		$logo = base_url('assets/img/logo.png');
 		$data = [
 			'title_pdf' => "Laporan Rekapan Data Peminjaman Perpustakaan SDN 04 Minas Jaya $hari_ini",
 			'hari' => $hari,
-			'rekapan_buku' => $databuku
+			'rekapan_buku' => $databuku,
+			'logo' => $logo
 		];
 
         // filename dari pdf ketika didownload
@@ -358,14 +406,16 @@ class Admin extends CI_Controller
 
 		if(isset($_POST['submit'])){
 
+			$id_pengguna = $_POST['id_pengguna'];
 			$nama = $_POST['nama'];
 			$username = $_POST['username'];
 			$password = $_POST['password'];
 			$tipe_user = $_POST['tipe_user'];
+			$id_kelas = $_POST['id_kelas'];
 
 			// $this->db->db_debug = false;
 
-			$query = $this->db->query("INSERT INTO pengguna values('','$nama','$username', '$password', '$tipe_user');");
+			$query = $this->db->query("INSERT INTO pengguna values('$id_pengguna','$nama','$username', '$password', '$tipe_user', '$id_kelas');");
 			
 			if($query){
 				redirect ('admin/pengguna');

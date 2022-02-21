@@ -7,57 +7,63 @@
         <style>
             #table {
                 font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-                border-collapse: collapse;
-                width: 100%;
-            }
-
-            #table td, #table th {
-                border: 1px solid #ddd;
-                padding: 8px;
-            }
-
-            #table tr:nth-child(even){background-color: #f2f2f2;}
-
-            #table tr:hover {background-color: #ddd;}
-
-            #table th {
-                padding-top: 10px;
-                padding-bottom: 10px;
-                text-align: left;
-                background-color: #4CAF50;
-                color: white;
             }
         </style>
     </head>
     <body>
-        <div style="text-align:center">
-            <h3>Laporan Pinjaman <br> Perpustakaan SDN 04 Minas Jaya</h3>
-			<h4><?= $hari; ?></h4>
-        </div>
-        <table id="table">
-            <thead>
-                <tr>
-                    <th>Nama Peminjam</th>
-                    <th>Judul Buku</th>
-                    <th>Tanggal Peminjaman</th>
-                    <th>Tanggal Pengembalian</th>
-					<th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
+		<table>
+			<tr>
+				<td><img style="max-width: 100px;" src="<?= $logo; ?>" alt=""></td>
+				<td>        
+					<div>
+						<h3>Bukti Peminjaman Buku<br> Perpustakaan SDN 04 Minas Jaya</h3>
+						<h4><?= $hari; ?></h4>
+					</div>
+				</td>
+			</tr>
+		</table>
+
+		<table>
+			<tr>
+			<td>
+				<table id="table">
 					<tr>
-					<td><?= $peminjaman['nama']; ?></td>
-					<td><?= $peminjaman['judul']; ?></td>
-					<td><?= $peminjaman['tgl_peminjaman']; ?></td>
-					<td><?= $peminjaman['tgl_pengembalian']; ?></td>
-					<?php if($peminjaman['status'] == 0) : ?>
-						<td>Belum Selesai</td>
-						<?php endif; ?>
-					<?php if($peminjaman['status'] != 0) : ?>
-						<td>Selesai</td>
-						<?php endif; ?>
-                </tr>
-            </tbody>
-        </table>
+						<td>Nama</td>
+						<td>:</td>
+						<td><?= $peminjaman['nama']; ?></td>
+					</tr>
+					<tr>
+						<td>NIS</td>
+						<td>:</td>
+						<td><?= $peminjaman['id_pengguna']; ?></td>
+					</tr>
+					<tr>
+						<td>Kelas</td>
+						<td>:</td>
+						<td><?= $peminjaman['id_kelas']; ?></td>
+					</tr>
+					<tr>
+						<td>Buku</td>
+						<td>:</td>
+						<td><?= $peminjaman['judul']; ?> (<?= $peminjaman['id_buku']; ?>)</td> 
+					</tr>
+					<tr>
+						<td>Tgl Peminjaman</td>
+						<td>:</td>
+						<td><?= $peminjaman['tgl_peminjaman']; ?></td>
+					</tr>
+					<tr>
+						<td>Tgl Pengembalian</td>
+						<td>:</td>
+						<td><?= $peminjaman['tgl_pengembalian']; ?></td>
+					</tr>
+				</table>
+			</td>
+			</tr>
+		</table>
+		<p style="text-align: right;">
+		<strong>Pengelola Perpustakaan
+		<br><br><br><br><br><br>
+		<?= $admin; ?></strong></p>
     </body>
 </html>

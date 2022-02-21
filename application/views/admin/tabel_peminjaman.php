@@ -40,7 +40,7 @@
 				<td><?= $row['tgl_peminjaman']; ?></td>
 				<td><?= $row['tgl_pengembalian']; ?></td>
 				<td>
-					<a style="color: black" href="#" class="badge badge-warning" >Notifikasi</a> |
+					<a style="color: black" href="<?= base_url('admin/notifikasipeminjaman'); ?>?id=<?= $row['id_peminjaman']; ?>" class="badge badge-warning" >Notifikasi</a> |
 					<a style="color: white" 
 						href="<?= base_url('admin/cetakpeminjamansatuan'); ?>?id=<?= $row['id_peminjaman']; ?>" 
 						class="badge badge-primary" >Cetak</a> |

@@ -223,8 +223,12 @@ class Pimpinan extends CI_Controller
 
 	public function denda()
 	{
+		$denda = $this->db->query("SELECT pengguna.nama, buku.judul, denda.tgl_bayar, denda.jlh_denda FROM denda, pengguna, buku, peminjaman WHERE pengguna.id_pengguna = peminjaman.id_pengunjung AND buku.id_buku = peminjaman.id_buku AND denda.id_peminjaman = peminjaman.id_peminjaman")->result();
+		$rekapan_denda = json_decode(json_encode($denda), True);
+		$data['denda'] = $rekapan_denda;
+
 		$this->load->view('template/header_pimpinan');
-		$this->load->view('pimpinan/tabel_denda');
+		$this->load->view('pimpinan/tabel_denda', $data);
 		$this->load->view('template/footer');
 	}
 

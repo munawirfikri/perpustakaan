@@ -18,6 +18,12 @@
 <!-- BEGIN CONTENT -->
 				<form action="<?= base_url('admin/tambahpengguna'); ?>" method="post">
 					<div class="form-group row">
+							<label style="color: #020202;" for="id_pengguna" class="col-sm-2 col-form-label">Kode Pengguna</label>
+							<div class="col-sm-10">
+							<input style="color: #020202;" type="number" name="id_pengguna" class="form-control" id="id_pengguna" placeholder="Masukkan kode pengguna" required>
+							</div>
+						</div>
+					<div class="form-group row">
 						<label style="color: #020202;" for="nama" class="col-sm-2 col-form-label">Nama Pengguna</label>
 						<div class="col-sm-10">
 						<input style="color: #020202;" type="text" name="nama" class="form-control" id="nama" placeholder="Masukkan nama pengguna" required>
@@ -44,6 +50,12 @@
 					<option value="3">Kepala Sekolah</option>
 					</select>
 					</div>
+					</div>
+					<div class="form-group row">
+						<label style="color: #020202;" for="id_kelas" class="col-sm-2 col-form-label">Kode Kelas</label>
+						<div class="col-sm-10">
+						<input style="color: #020202;" type="id_kelas" name="id_kelas" class="form-control" id="id_kelas" placeholder="Masukkan kode kelas" required>
+						</div>
 					</div>
 					<div class="row">
 						<button type="submit" name="submit"  class="mt-3 col-lg-12 text-center btn btn-primary">Tambah</button>

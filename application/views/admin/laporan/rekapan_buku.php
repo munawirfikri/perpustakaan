@@ -31,6 +31,7 @@
     </head>
     <body>
         <div style="text-align:center">
+			<img style="max-width: 100px;" src="<?= $logo; ?>" alt="">
             <h3> Laporan Rekapan Buku <br> Perpustakaan SDN 04 Minas Jaya</h3>
 			<h4><?= $hari; ?></h4>
         </div>
@@ -42,7 +43,6 @@
                     <th>Judul</th>
                     <th>Penerbit</th>
                     <th>Tahun</th>
-                    <th>ISBN</th>
                 </tr>
             </thead>
             <tbody>
@@ -52,9 +52,8 @@
                     <td scope="row"><?= $i; ?></td>
 					<td><?= $row['id_buku']; ?></td>
 					<td><?= $row['judul']; ?></td>
-					<td><?= $row['nm_penerbit']; ?></td>
+					<td><?= $row['penerbit']; ?></td>
 					<td><?= $row['thn_terbit']; ?></td>
-					<td><?= $row['isbn']; ?></td>
                 </tr>
 				<?php $i++; ?>
 				<?php endforeach; ?>

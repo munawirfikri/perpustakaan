@@ -31,28 +31,36 @@
     </head>
     <body>
         <div style="text-align:center">
+			<img style="max-width: 100px;" src="<?= $logo; ?>" />
             <h3> Laporan Rekapan Pinjaman <br> Perpustakaan SDN 04 Minas Jaya</h3>
 			<h4><?= $hari; ?></h4>
         </div>
         <table id="table">
             <thead>
                 <tr>
-                    <th class="text-center">No.</th>
-                    <th class="text-center">Nama Peminjam</th>
-                    <th class="text-center">Judul Buku</th>
-                    <th class="text-center">Tanggal Peminjaman</th>
-                    <th class="text-center">Tanggal Pengembalian</th>
+                    <th>No.</th>
+                    <th>Nama Peminjam</th>
+                    <th>Judul Buku</th>
+                    <th>Tanggal Peminjaman</th>
+                    <th>Batas Pengembalian</th>
+                    <th>Pengembalian</th>
                 </tr>
             </thead>
             <tbody>
                 <?php $i = 1; ?>
 				<?php foreach($rekapan_peminjaman as $row) : ?>
 					<tr>
-                    <td scope="row"><?= $i; ?></td>
+                    <td class="text-center" scope="row"><?= $i; ?></td>
 					<td><?= $row['nama']; ?></td>
 					<td><?= $row['judul']; ?></td>
 					<td><?= $row['tgl_peminjaman']; ?></td>
-					<td><?= $row['tgl_pengembalian']; ?></td>
+					<td><?= $row['batas_waktu']; ?></td>
+					<?php if($row['tgl_pengembalian'] == NULL) : ?>
+							<td>Belum</td>
+						<?php endif; ?>
+					<?php if($row['tgl_pengembalian'] != NULL) : ?>
+							<td style="text-align: center"><?= $row['tgl_pengembalian']; ?></td>
+						<?php endif; ?>
                 </tr>
 				<?php $i++; ?>
 				<?php endforeach; ?>

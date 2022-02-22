@@ -16,9 +16,9 @@
                 </div>
                 <div class="card-body">
                   <div class="text-center">
-                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 15rem;" src="<?= base_url('assets'); ?>/img/logo.png" alt="">
+                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="<?= base_url('assets'); ?>/img/logo.png" alt="">
                   </div>
-                  <p style="color: black;" class="text-center">Keterangan Sekolah</p>
+                  <p style="color: black;" class="text-center">Jl. Yos Sudarso Km. 26 Minas, Minas Jaya, Kecamatan Minas, Kabupaten Siak, Riau - Indonesia</p>
                 </div>
               </div>
             </div>

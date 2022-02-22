@@ -40,13 +40,13 @@
 				<td><?= $row['id_buku'] ?></td>
 				<td><?= $row['judul'] ?></td>
 				<td><?= $row['penerbit'] ?></td>
-				<td><?= $row['thn_terbit'] ?></td>
+				<td class="text-center"><?= $row['thn_terbit'] ?></td>
 				<?php if($row['tersedia'] == 0): ?>
-					<td>Dipinjam</td>
+					<td class="text-center">Dipinjam</td>
 					<td class="text-center">-</td>
 					<?php endif; ?>
 				<?php if($row['tersedia'] == 1): ?>
-					<td>Ada</td>
+					<td class="text-center">Ada</td>
 					<td><a href="<?= base_url('admin/hapusbuku'); ?>?id=<?= $row['id_buku']; ?>" class="badge badge-danger" onclick="return confirm('Sudah Oke ingin menghapus buku ini?')">Hapus</a></td>
 					<?php endif; ?>
 			</tr>

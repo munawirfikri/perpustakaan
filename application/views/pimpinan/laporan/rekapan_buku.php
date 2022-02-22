@@ -31,30 +31,29 @@
     </head>
     <body>
         <div style="text-align:center">
+			<img style="max-width: 100px;" src="<?= $logo; ?>" alt="">
             <h3> Laporan Rekapan Buku <br> Perpustakaan SDN 04 Minas Jaya</h3>
 			<h4><?= $hari; ?></h4>
         </div>
         <table id="table">
             <thead>
                 <tr>
-                    <th class="text-center">No.</th>
-                    <th class="text-center">Kode Buku</th>
-                    <th class="text-center">Judul</th>
-                    <th class="text-center">Penerbit</th>
-                    <th class="text-center">Tahun</th>
-                    <th class="text-center">ISBN</th>
+                    <th style="text-align: center;">No.</th>
+                    <th style="text-align: center;">Kode Buku</th>
+                    <th>Judul</th>
+                    <th>Penerbit</th>
+                    <th style="text-align: center;">Tahun</th>
                 </tr>
             </thead>
             <tbody>
                 <?php $i = 1; ?>
 				<?php foreach($rekapan_buku as $row) : ?>
 					<tr>
-                    <td scope="row"><?= $i; ?></td>
-					<td><?= $row['id_buku']; ?></td>
+                    <td style="text-align: center;" scope="row"><?= $i; ?></td>
+					<td style="text-align: center;"><?= $row['id_buku']; ?></td>
 					<td><?= $row['judul']; ?></td>
-					<td><?= $row['nm_penerbit']; ?></td>
-					<td><?= $row['thn_terbit']; ?></td>
-					<td><?= $row['isbn']; ?></td>
+					<td><?= $row['penerbit']; ?></td>
+					<td style="text-align: center;"><?= $row['thn_terbit']; ?></td>
                 </tr>
 				<?php $i++; ?>
 				<?php endforeach; ?>

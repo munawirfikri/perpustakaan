@@ -48,7 +48,7 @@
 						<td class="text-center">Belum</td>
 						<?php endif; ?>
 				<?php if($row['tgl_pengembalian'] != NULL) : ?>
-						<td><?= $row['tgl_pengembalian']; ?></td>
+						<td style="text-align: center"><?= $row['tgl_pengembalian']; ?></td>
 					<?php endif; ?>
 				<td class="text-center">
 					<a style="color: black" href="<?= base_url('admin/notifikasipeminjaman'); ?>?id=<?= $row['id_peminjaman']; ?>" class="badge badge-warning" >Notifikasi</a> |

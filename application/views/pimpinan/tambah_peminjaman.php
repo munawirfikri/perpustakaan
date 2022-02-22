@@ -18,9 +18,9 @@
 <!-- BEGIN CONTENT -->
 				<form action="<?= base_url('admin/tambahpeminjaman'); ?>" method="post">
 					<div class="form-group row">
-						<label style="color: #020202;" for="idPeminjam" class="col-sm-2 col-form-label">ID Peminjam</label>
+						<label style="color: #020202;" for="idPeminjam" class="col-sm-2 col-form-label">Nomor Induk Siswa</label>
 						<div class="col-sm-10">
-						<input style="color: #020202;" type="text" class="form-control" id="idPeminjam" name="id_peminjam" placeholder="Masukkan ID Peminjam">
+						<input style="color: #020202;" type="text" class="form-control" id="idPeminjam" name="id_peminjam" placeholder="Masukkan Nomor Induk Siswa">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -36,10 +36,10 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<label style="color: #020202;" for="tanggal_pengembalian" class="col-sm-2 col-form-label">Tanggal Pengembalian</label>
+						<label style="color: #020202;" for="batas_waktu" class="col-sm-2 col-form-label">Batas Waktu Peminjaman</label>
 						<div class="col-sm-10">
 							<?php   $tomorrow = date("Y-m-d", strtotime("+7 day")); ?>
-						<input style="color: #020202;" type="date" name="tanggal_pengembalian" class="form-control" id="tanggal_pengembalian" value="<?php echo $tomorrow; ?>">
+						<input style="color: #020202;" type="date" name="batas_waktu" class="form-control" id="batas_waktu" value="<?php echo $tomorrow; ?>">
 						</div>
 					</div>
 					<div class="row">

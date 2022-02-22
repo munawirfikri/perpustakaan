@@ -31,37 +31,39 @@
     </head>
     <body>
         <div style="text-align:center">
-			<img style="max-width: 100px;" src="<?= $logo; ?>" />
-            <h3> Laporan Rekapan Pinjaman <br> Perpustakaan SDN 04 Minas Jaya</h3>
+            <h3> Daftar Pengguna <br> Perpustakaan SDN 04 Minas Jaya</h3>
 			<h4><?= $hari; ?></h4>
         </div>
         <table id="table">
             <thead>
                 <tr>
-                    <th>No.</th>
-                    <th>Nama Peminjam</th>
-                    <th>Judul Buku</th>
-                    <th>Tanggal Peminjaman</th>
-                    <th>Batas Pengembalian</th>
-                    <th>Pengembalian</th>
+                    <th class="text-center">No.</th>
+                    <th class="text-center">ID</th>
+                    <th class="text-center">Nama</th>
+                    <th class="text-center">Username</th>
+                    <th class="text-center">Role</th>
                 </tr>
             </thead>
             <tbody>
                 <?php $i = 1; ?>
-				<?php foreach($rekapan_peminjaman as $row) : ?>
-					<tr>
-                    <td class="text-center" scope="row"><?= $i; ?></td>
-					<td><?= $row['nama']; ?></td>
-					<td><?= $row['judul']; ?></td>
-					<td><?= $row['tgl_peminjaman']; ?></td>
-					<td><?= $row['batas_waktu']; ?></td>
-					<?php if($row['tgl_pengembalian'] == NULL) : ?>
-							<td>Belum</td>
+				<?php foreach($pengguna as $row) : ?>
+				<tr>
+				<td scope="row"><?= $i; ?></td>
+				<td><?= $row['id_pengguna'] ?></td>
+				<td><?= $row['nama'] ?></td>
+				<td><?= $row['username'] ?></td>
+				<td>
+					<?php if($row['tipe_user'] == 1) : ?>
+						Admin
 						<?php endif; ?>
-					<?php if($row['tgl_pengembalian'] != NULL) : ?>
-							<td style="text-align: center"><?= $row['tgl_pengembalian']; ?></td>
+					<?php if($row['tipe_user'] == 2) : ?>
+						Pengunjung
 						<?php endif; ?>
-                </tr>
+					<?php if($row['tipe_user'] == 3) : ?>
+						Kepala Sekolah
+						<?php endif; ?>
+				</td>
+				</tr>
 				<?php $i++; ?>
 				<?php endforeach; ?>
             </tbody>

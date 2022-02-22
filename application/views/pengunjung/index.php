@@ -38,12 +38,12 @@
 				<td><?= $row['id_buku'] ?></td>
 				<td><?= $row['judul'] ?></td>
 				<td><?= $row['penerbit'] ?></td>
-				<td><?= $row['thn_terbit'] ?></td>
+				<td class="text-center"><?= $row['thn_terbit'] ?></td>
 				<?php if($row['tersedia'] == 0): ?>
-					<td>Dipinjam</td>
+					<td class="text-center">Dipinjam</td>
 					<?php endif; ?>
 				<?php if($row['tersedia'] == 1): ?>
-					<td>Ada</td>
+					<td class="text-center">Ada</td>
 					<?php endif; ?>
 			</tr>
 			<?php endforeach; ?>

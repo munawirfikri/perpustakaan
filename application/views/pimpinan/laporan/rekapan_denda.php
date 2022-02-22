@@ -31,39 +31,34 @@
     </head>
     <body>
         <div style="text-align:center">
-			<img style="max-width: 100px;" src="<?= $logo; ?>" />
-            <h3> Laporan Rekapan Pinjaman <br> Perpustakaan SDN 04 Minas Jaya</h3>
+			<img style="max-width: 100px;" src="<?= $logo; ?>" alt="">
+            <h3> Laporan Rekapan Riwayat Denda <br> Perpustakaan SDN 04 Minas Jaya</h3>
 			<h4><?= $hari; ?></h4>
         </div>
         <table id="table">
             <thead>
                 <tr>
-                    <th>No.</th>
-                    <th>Nama Peminjam</th>
-                    <th>Judul Buku</th>
-                    <th>Tanggal Peminjaman</th>
-                    <th>Batas Pengembalian</th>
-                    <th>Pengembalian</th>
+				<th style="text-align: center;">No.</th>
+				<th>Nama Peminjam</th>
+				<th>Judul Buku</th>
+				<th style="text-align: center;">Batas Waktu</th>
+				<th style="text-align: center;">Tgl Pengembalian</th>
+				<th style="text-align: center;">Jumlah Denda</th>
                 </tr>
             </thead>
             <tbody>
-                <?php $i = 1; ?>
-				<?php foreach($rekapan_peminjaman as $row) : ?>
-					<tr>
-                    <td class="text-center" scope="row"><?= $i; ?></td>
-					<td><?= $row['nama']; ?></td>
-					<td><?= $row['judul']; ?></td>
-					<td><?= $row['tgl_peminjaman']; ?></td>
-					<td><?= $row['batas_waktu']; ?></td>
-					<?php if($row['tgl_pengembalian'] == NULL) : ?>
-							<td>Belum</td>
-						<?php endif; ?>
-					<?php if($row['tgl_pengembalian'] != NULL) : ?>
-							<td style="text-align: center"><?= $row['tgl_pengembalian']; ?></td>
-						<?php endif; ?>
-                </tr>
-				<?php $i++; ?>
-				<?php endforeach; ?>
+			<!-- begin foreach -->
+			<?php $i=1; foreach($denda as $row): ?>
+			<tr>
+				<td style="text-align: center;"><?= $i; ?></td>
+				<td><?= $row['nama']; ?></td>
+				<td><?= $row['judul']; ?></td>
+				<td style="text-align: center;"><?= $row['batas_waktu']; ?></td>
+				<td style="text-align: center;"><?= $row['tgl_pengembalian']; ?></td>
+				<td style="text-align: center;">Rp.<?= $row['jlh_denda']; ?></td>
+			</tr>
+			<?php $i++; endforeach; ?>
+			<!-- endfoeach -->
             </tbody>
         </table>
     </body>

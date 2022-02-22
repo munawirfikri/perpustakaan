@@ -15,18 +15,20 @@
 	  <table class="table table-bordered" style="color: black;" id="dataTable" width="100%" cellspacing="0">
 	  	<thead>
 		  <tr>
-			<th>ISBN</th>
-			<th>Judul Buku</th>
-			<th>Penerbit</th>
-			<th>Tahun Terbit</th>
+			<th class="text-center">ISBN</th>
+			<th class="text-center">Judul Buku</th>
+			<th class="text-center">Penerbit</th>
+			<th class="text-center">Tahun Terbit</th>
+			<th class="text-center">Status</th>
 		  </tr>
 		</thead>
 		<tfoot>
 		<tr>
-			<th>ISBN</th>
-			<th>Judul Buku</th>
-			<th>Penerbit</th>
-			<th>Tahun Terbit</th>
+			<th class="text-center">ISBN</th>
+			<th class="text-center">Judul Buku</th>
+			<th class="text-center">Penerbit</th>
+			<th class="text-center">Tahun Terbit</th>
+			<th class="text-center">Status</th>
 		  </tr>
 		</tfoot>
 		<tbody>
@@ -37,14 +39,17 @@
 				<td><?= $row['judul'] ?></td>
 				<td><?= $row['penerbit'] ?></td>
 				<td><?= $row['thn_terbit'] ?></td>
+				<?php if($row['tersedia'] == 0): ?>
+					<td>Dipinjam</td>
+					<?php endif; ?>
+				<?php if($row['tersedia'] == 1): ?>
+					<td>Ada</td>
+					<?php endif; ?>
 			</tr>
 			<?php endforeach; ?>
 			<!-- endfoeach -->
 		</tbody>
 	  </table>
-	</div>
-	<div class="row">
-		<a href="<?= base_url('admin/cetakrekapanbuku'); ?>" class="mt-3 col-lg-12 text-center btn btn-primary">Cetak</a>
 	</div>
   </div>
 </div>

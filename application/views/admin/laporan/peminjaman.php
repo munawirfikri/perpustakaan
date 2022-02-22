@@ -53,9 +53,9 @@
 						<td><?= $peminjaman['tgl_peminjaman']; ?></td>
 					</tr>
 					<tr>
-						<td>Tgl Pengembalian</td>
+						<td>Batas Peminjaman</td>
 						<td>:</td>
-						<td><?= $peminjaman['tgl_pengembalian']; ?></td>
+						<td><?= $peminjaman['batas_waktu']; ?></td>
 					</tr>
 				</table>
 			</td>

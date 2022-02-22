@@ -37,11 +37,11 @@
         <table id="table">
             <thead>
                 <tr>
-                    <th>No.</th>
-                    <th>Nama Peminjam</th>
-                    <th>Judul Buku</th>
-                    <th>Tanggal Peminjaman</th>
-                    <th>Tanggal Pengembalian</th>
+                    <th class="text-center">No.</th>
+                    <th class="text-center">Nama Peminjam</th>
+                    <th class="text-center">Judul Buku</th>
+                    <th class="text-center">Tanggal Peminjaman</th>
+                    <th class="text-center">Tanggal Pengembalian</th>
                 </tr>
             </thead>
             <tbody>

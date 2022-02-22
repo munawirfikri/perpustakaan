@@ -15,18 +15,18 @@
 	  <table class="table table-bordered" style="color: black;" id="dataTable" width="100%" cellspacing="0">
 	  	<thead>
 		  <tr>
-			<th>Nama Peminjam</th>
-			<th>Judul Buku</th>
-			<th>Tgl Pengembalian</th>
-			<th>Jumlah Denda</th>
+			<th class="text-center">Nama Peminjam</th>
+			<th class="text-center">Judul Buku</th>
+			<th class="text-center">Tgl Pengembalian</th>
+			<th class="text-center">Jumlah Denda</th>
 		  </tr>
 		</thead>
 		<tfoot>
 		<tr>
-			<th>Nama Peminjam</th>
-			<th>Judul Buku</th>
-			<th>Tgl Pengembalian</th>
-			<th>Jumlah Denda</th>
+			<th class="text-center">Nama Peminjam</th>
+			<th class="text-center">Judul Buku</th>
+			<th class="text-center">Tgl Pengembalian</th>
+			<th class="text-center">Jumlah Denda</th>
 		  </tr>
 		</tfoot>
 		<tbody>

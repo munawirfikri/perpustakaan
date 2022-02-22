@@ -20,7 +20,7 @@
 
 </head>
 
-<body class="bg-gradient-primary">
+<body>
 <?php if($this->session->flashdata('flash') === 'loginFailed') { ?>
 					<script>alert('Username/password salah')</script>
 			<?php } ?>
@@ -31,20 +31,17 @@
 
       <div class="col-xl-10 col-lg-12 col-md-9">
 								<div class="text-center my-5">
-								<img width="100px" src="<?= base_url('assets'); ?>/img/logo.png" />
-                    <h1 class="h4 text-white my-5 mb-3">SELAMAT DATANG 
+								<img width="200px" src="<?= base_url('assets'); ?>/img/logo.png" />
+                    <h1 style="color: black; font-weight: bold;" class="h4 my-1 mb-3">SELAMAT DATANG 
 											<br/>DI PERPUSTAKAAN SDN 04 MINAS JAYA
 										</h1>
                   </div>
 
-        <div class="card o-hidden border-0 shadow-lg my-1">
+        <div style="max-width: 450px;" class="card bg-secondary o-hidden border-0 shadow-lg my-1 mx-auto">
           <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
             <div class="row">
-							<div class="col-lg-3 p-5">
-								<img width="180px" src="<?= base_url('assets'); ?>/img/profile.png"/>
-							</div>
-              <div class="col-lg-9">
+              <div class="col-lg-12 ">
                 <div class="p-5">
                   <form method="post" action="<?= base_url('auth'); ?>" class="user">
                     <div class="form-group">
@@ -53,8 +50,8 @@
                     <div class="form-group">
                       <input style="color: black" type="password" class="form-control form-control-user" name="password" id="password" placeholder="Password">
                     </div>
-                    <button type="submit" name="submit" class="btn btn-primary btn-user btn-block">
-                      Masuk
+                    <button style="font-weight: bold; color: black;" type="submit" name="submit" class="btn btn-primary btn-user btn-block">
+                      MASUK
                     </button>
                   </form>
                 </div>

@@ -37,11 +37,11 @@
         <table id="table">
             <thead>
                 <tr>
-                    <th>No.</th>
-                    <th>ID</th>
-                    <th>Nama</th>
-                    <th>Username</th>
-                    <th>Role</th>
+                    <th class="text-center">No.</th>
+                    <th class="text-center">ID</th>
+                    <th class="text-center">Nama</th>
+                    <th class="text-center">Username</th>
+                    <th class="text-center">Role</th>
                 </tr>
             </thead>
             <tbody>

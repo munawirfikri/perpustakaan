@@ -15,18 +15,18 @@
 	  <table class="table table-bordered" style="color: black;" id="dataTable" width="100%" cellspacing="0">
 	  	<thead>
 		  <tr>
-			<th>ISBN</th>
-			<th>Judul Buku</th>
-			<th>Penerbit</th>
-			<th>Tahun Terbit</th>
+			<th class="text-center">ISBN</th>
+			<th class="text-center">Judul Buku</th>
+			<th class="text-center">Penerbit</th>
+			<th class="text-center">Tahun Terbit</th>
 		  </tr>
 		</thead>
 		<tfoot>
 		<tr>
-			<th>ISBN</th>
-			<th>Judul Buku</th>
-			<th>Penerbit</th>
-			<th>Tahun Terbit</th>
+			<th class="text-center">ISBN</th>
+			<th class="text-center">Judul Buku</th>
+			<th class="text-center">Penerbit</th>
+			<th class="text-center">Tahun Terbit</th>
 		  </tr>
 		</tfoot>
 		<tbody>

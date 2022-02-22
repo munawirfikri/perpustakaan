@@ -15,43 +15,54 @@
 	  <table class="table table-bordered" style="color: black;" id="dataTable" width="100%" cellspacing="0">
 	  	<thead>
 		  <tr>
-			<th>Nama Peminjam</th>
+		 	<th class="text-center">No</th>
+		 	<th>Nama Peminjam</th>
 			<th>Judul Buku</th>
-			<th>Tgl Peminjaman</th>
-			<th>Tgl Pengembalian</th>
-			<th>Status</th>
-			<th>Denda</th>
-			<th>Aksi</th>
+			<th class="text-center">Tgl Peminjaman</th>
+			<th class="text-center">Batas Waktu</th>
+			<th class="text-center">Tgl Pengembalian</th>
+			<th class="text-center">Status</th>
+			<th class="text-center">Denda</th>
+			<th class="text-center">Aksi</th>
 		  </tr>
 		</thead>
 		<tfoot>
 		<tr>
+			<th class="text-center">No</th>
 			<th>Nama Peminjam</th>
 			<th>Judul Buku</th>
-			<th>Tgl Peminjaman</th>
-			<th>Tgl Pengembalian</th>
-			<th>Status</th>
-			<th>Denda</th>
-			<th>Aksi</th>
+			<th class="text-center">Tgl Peminjaman</th>
+			<th class="text-center">Batas Waktu</th>
+			<th class="text-center">Tgl Pengembalian</th>
+			<th class="text-center">Status</th>
+			<th class="text-center">Denda</th>
+			<th class="text-center">Aksi</th>
 		  </tr>
 		</tfoot>
 		<tbody>
 			<!-- begin foreach -->
-			<?php foreach($pengembalian as $row) : ?>
+			<?php $a=1; foreach($pengembalian as $row) : ?>
 			<tr>
+				<td class="text-center"><?= $a; ?></td>
 				<td><?= $row['nama']; ?></td>
 				<td><?= $row['judul']; ?></td>
-				<td><?= $row['tgl_peminjaman']; ?></td>
-				<td><?= $row['tgl_pengembalian']; ?></td>
+				<td class="text-center"><?= $row['tgl_peminjaman']; ?></td>
+				<td class="text-center"><?= $row['batas_waktu']; ?></td>
+				<?php if($row['tgl_pengembalian'] == NULL) : ?>
+						<td class="text-center">-</td>
+					<?php endif; ?>
+				<?php if($row['tgl_pengembalian'] != NULL) : ?>
+					<td class="text-center"><?= $row['tgl_pengembalian']; ?></td>
+					<?php endif; ?>
 				<?php if($row['status'] == 0) : ?>
-						<td>Belum Selesai</td>
+						<td class="text-center">Belum Selesai</td>
 					<?php endif; ?>
 				<?php if($row['status'] != 0) : ?>
-					<td>Selesai</td>
+					<td class="text-center">Selesai</td>
 					<?php endif; ?>
-				<td>
+				<td class="text-center">
 				<?php
-					$begin = new DateTime($row['tgl_pengembalian']);
+					$begin = new DateTime($row['batas_waktu']);
 					$end = new DateTime('now');
 
 					$daterange     = new DatePeriod($begin, new DateInterval('P1D'), $end);
@@ -94,7 +105,7 @@
 					}
 					?>
 				</td>
-				<td> 
+				<td class="text-center"> 
 					<?php if($row['status'] == 0) : ?>
 					<a onclick="return confirm('Update data ini?')" href="<?= base_url('admin/updatepengembalian'); ?>?status=<?= $row['status']; ?>&id=
 					<?= $row['id_peminjaman']; ?>&denda=<?= $selisih*1000; ?>
@@ -108,12 +119,9 @@
 				</td>
 			</tr>
 			<!-- endfoeach -->
-			<?php endforeach; ?>
+			<?php $a++; endforeach; ?>
 		</tbody>
 	  </table>
-	</div>
-	<div class="row">
-		<a href="#" class="mt-3 col-lg-12 text-center btn btn-primary">Cetak</a>
 	</div>
   </div>
 </div>

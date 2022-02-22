@@ -42,18 +42,25 @@
                     <th>Nama Peminjam</th>
                     <th>Judul Buku</th>
                     <th>Tanggal Peminjaman</th>
-                    <th>Tanggal Pengembalian</th>
+                    <th>Batas Pengembalian</th>
+                    <th>Pengembalian</th>
                 </tr>
             </thead>
             <tbody>
                 <?php $i = 1; ?>
 				<?php foreach($rekapan_peminjaman as $row) : ?>
 					<tr>
-                    <td scope="row"><?= $i; ?></td>
+                    <td class="text-center" scope="row"><?= $i; ?></td>
 					<td><?= $row['nama']; ?></td>
 					<td><?= $row['judul']; ?></td>
 					<td><?= $row['tgl_peminjaman']; ?></td>
-					<td><?= $row['tgl_pengembalian']; ?></td>
+					<td><?= $row['batas_waktu']; ?></td>
+					<?php if($row['tgl_pengembalian'] == NULL) : ?>
+							<td>Belum</td>
+						<?php endif; ?>
+					<?php if($row['tgl_pengembalian'] != NULL) : ?>
+							<td><?= $row['tgl_pengembalian']; ?></td>
+						<?php endif; ?>
                 </tr>
 				<?php $i++; ?>
 				<?php endforeach; ?>

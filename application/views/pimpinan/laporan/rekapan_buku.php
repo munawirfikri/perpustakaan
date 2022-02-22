@@ -37,12 +37,12 @@
         <table id="table">
             <thead>
                 <tr>
-                    <th>No.</th>
-                    <th>Kode Buku</th>
-                    <th>Judul</th>
-                    <th>Penerbit</th>
-                    <th>Tahun</th>
-                    <th>ISBN</th>
+                    <th class="text-center">No.</th>
+                    <th class="text-center">Kode Buku</th>
+                    <th class="text-center">Judul</th>
+                    <th class="text-center">Penerbit</th>
+                    <th class="text-center">Tahun</th>
+                    <th class="text-center">ISBN</th>
                 </tr>
             </thead>
             <tbody>

@@ -38,22 +38,22 @@
         <table id="table">
             <thead>
                 <tr>
-                    <th>No.</th>
-                    <th>Kode Buku</th>
+                    <th style="text-align: center;">No.</th>
+                    <th style="text-align: center;">Kode Buku</th>
                     <th>Judul</th>
                     <th>Penerbit</th>
-                    <th>Tahun</th>
+                    <th style="text-align: center;">Tahun</th>
                 </tr>
             </thead>
             <tbody>
                 <?php $i = 1; ?>
 				<?php foreach($rekapan_buku as $row) : ?>
 					<tr>
-                    <td scope="row"><?= $i; ?></td>
-					<td><?= $row['id_buku']; ?></td>
+                    <td style="text-align: center;" scope="row"><?= $i; ?></td>
+					<td style="text-align: center;"><?= $row['id_buku']; ?></td>
 					<td><?= $row['judul']; ?></td>
 					<td><?= $row['penerbit']; ?></td>
-					<td><?= $row['thn_terbit']; ?></td>
+					<td style="text-align: center;"><?= $row['thn_terbit']; ?></td>
                 </tr>
 				<?php $i++; ?>
 				<?php endforeach; ?>

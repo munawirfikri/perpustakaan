@@ -8,37 +8,43 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-	<h6 style="color: maroon;" class="m-0 font-weight-bold">Rekapan Denda</h6>
+	<h6 style="color: maroon;" class="m-0 font-weight-bold">Rekapan Riwayat Denda</h6>
   </div>
   <div class="card-body">
 	<div class="table-responsive">
 	  <table class="table table-bordered" style="color: black;" id="dataTable" width="100%" cellspacing="0">
 	  	<thead>
 		  <tr>
+			<th class="text-center">No</th>
 			<th>Nama Peminjam</th>
 			<th>Judul Buku</th>
-			<th>Tgl Pengembalian</th>
-			<th>Jumlah Denda</th>
+			<th class="text-center">Batas Pengembalian</th>
+			<th class="text-center">Tgl Pengembalian</th>
+			<th class="text-center">Jumlah Denda</th>
 		  </tr>
 		</thead>
 		<tfoot>
 		<tr>
+			<th class="text-center">No</th>
 			<th>Nama Peminjam</th>
 			<th>Judul Buku</th>
-			<th>Tgl Pengembalian</th>
-			<th>Jumlah Denda</th>
+			<th class="text-center">Batas Pengembalian</th>
+			<th class="text-center">Tgl Pengembalian</th>
+			<th class="text-center">Jumlah Denda</th>
 		  </tr>
 		</tfoot>
 		<tbody>
 			<!-- begin foreach -->
-			<?php foreach($denda as $row): ?>
+			<?php $i=1; foreach($denda as $row): ?>
 			<tr>
+				<td class="text-center"><?= $i; ?></td>
 				<td><?= $row['nama']; ?></td>
 				<td><?= $row['judul']; ?></td>
-				<td><?= $row['tgl_bayar']; ?></td>
-				<td>Rp.<?= $row['jlh_denda']; ?></td>
+				<td class="text-center"><?= $row['batas_waktu']; ?></td>
+				<td class="text-center"><?= $row['tgl_pengembalian']; ?></td>
+				<td class="text-center">Rp.<?= $row['jlh_denda']; ?></td>
 			</tr>
-			<?php endforeach; ?>
+			<?php $i++; endforeach; ?>
 			<!-- endfoeach -->
 		</tbody>
 	  </table>

@@ -15,20 +15,20 @@
 	  <table class="table table-bordered" style="color: black;" id="dataTable" width="100%" cellspacing="0">
 	  	<thead>
 		  <tr>
-			<th>ID</th>
-			<th>Nama</th>
-			<th>Username</th>
-			<th>Role</th>
-			<th>Aksi</th>
+			<th class="text-center">ID</th>
+			<th class="text-center">Nama</th>
+			<th class="text-center">Username</th>
+			<th class="text-center">Role</th>
+			<th class="text-center">Aksi</th>
 		  </tr>
 		</thead>
 		<tfoot>
 		<tr>
-			<th>ID</th>
-			<th>Nama</th>
-			<th>Username</th>
-			<th>Role</th>
-			<th>Aksi</th>
+			<th class="text-center">ID</th>
+			<th class="text-center">Nama</th>
+			<th class="text-center">Username</th>
+			<th class="text-center">Role</th>
+			<th class="text-center">Aksi</th>
 		  </tr>
 		</tfoot>
 		<tbody>

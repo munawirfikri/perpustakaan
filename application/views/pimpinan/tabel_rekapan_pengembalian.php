@@ -15,20 +15,20 @@
 	  <table class="table table-bordered" style="color: black;" id="dataTable" width="100%" cellspacing="0">
 	  	<thead>
 		  <tr>
-			<th>Nama Peminjam</th>
-			<th>Judul Buku</th>
-			<th>Tgl Peminjaman</th>
-			<th>Tgl Pengembalian</th>
-			<th>Ket</th>
+			<th class="text-center">Nama Peminjam</th>
+			<th class="text-center">Judul Buku</th>
+			<th class="text-center">Tgl Peminjaman</th>
+			<th class="text-center">Tgl Pengembalian</th>
+			<th class="text-center">Ket</th>
 		  </tr>
 		</thead>
 		<tfoot>
 		<tr>
-			<th>Nama Peminjam</th>
-			<th>Judul Buku</th>
-			<th>Tgl Peminjaman</th>
-			<th>Tgl Pengembalian</th>
-			<th>Ket</th>
+			<th class="text-center">Nama Peminjam</th>
+			<th class="text-center">Judul Buku</th>
+			<th class="text-center">Tgl Peminjaman</th>
+			<th class="text-center">Tgl Pengembalian</th>
+			<th class="text-center">Ket</th>
 		  </tr>
 		</tfoot>
 		<tbody>

@@ -18,9 +18,9 @@
 <!-- BEGIN CONTENT -->
 				<form action="<?= base_url('admin/tambahbuku'); ?>" method="post">
 					<div class="form-group row">
-						<label style="color: #020202;" for="idBuku" class="col-sm-2 col-form-label">Kode Buku</label>
+						<label style="color: #020202;" for="idBuku" class="col-sm-2 col-form-label">ISBN</label>
 						<div class="col-sm-10">
-						<input style="color: #020202;" type="text" class="form-control" id="idBuku" required name="id_buku" placeholder="Masukkan kode buku">
+						<input style="color: #020202;" type="text" class="form-control" id="idBuku" required name="id_buku" placeholder="Masukkan kode buku/isbn">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -36,9 +36,9 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<label style="color: #020202;" for="isbn" class="col-sm-2 col-form-label">ISBN</label>
+						<label style="color: #020202;" for="pengarang" class="col-sm-2 col-form-label">Pengarang</label>
 						<div class="col-sm-10">
-						<input style="color: #020202;" type="text" name="isbn" class="form-control" id="isbn" placeholder="Masukkan ISBN" required>
+						<input style="color: #020202;" type="text" name="pengarang" class="form-control" id="pengarang" placeholder="Masukkan nama pengarang" required>
 						</div>
 					</div>
 					<div class="form-group row">

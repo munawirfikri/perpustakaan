@@ -15,31 +15,42 @@
 	  <table class="table table-bordered" style="color: black;" id="dataTable" width="100%" cellspacing="0">
 	  	<thead>
 		  <tr>
+			<th class="text-center">No</th>
 			<th>Nama Peminjam</th>
 			<th>Judul Buku</th>
-			<th>Tgl Peminjaman</th>
-			<th>Tgl Pengembalian</th>
-			<th>Keterangan</th>
+			<th class="text-center">Tgl Peminjaman</th>
+			<th class="text-center">Batas Waktu</th>
+			<th class="text-center">Pengembalian</th>
+			<th class="text-center">Keterangan</th>
 		  </tr>
 		</thead>
 		<tfoot>
 		<tr>
+			<th class="text-center">No</th>
 			<th>Nama Peminjam</th>
 			<th>Judul Buku</th>
-			<th>Tgl Peminjaman</th>
-			<th>Tgl Pengembalian</th>
-			<th>Keterangan</th>
+			<th class="text-center">Tgl Peminjaman</th>
+			<th class="text-center">Batas Waktu</th>
+			<th class="text-center">Pengembalian</th>
+			<th class="text-center">Keterangan</th>
 		  </tr>
 		</tfoot>
 		<tbody>
 			<!-- begin foreach -->
-			<?php foreach($rekapan_peminjaman as $row) : ?>
+			<?php $i=1; foreach($rekapan_peminjaman as $row) : ?>
 			<tr>
+				<td class="text-center"><?= $i; ?></td>
 				<td><?= $row['nama']; ?></td>
 				<td><?= $row['judul']; ?></td>
-				<td><?= $row['tgl_peminjaman']; ?></td>
-				<td><?= $row['tgl_pengembalian']; ?></td>
-				<td>
+				<td class="text-center"><?= $row['tgl_peminjaman']; ?></td>
+				<td class="text-center"><?= $row['batas_waktu']; ?></td>
+				<?php if($row['tgl_pengembalian'] == NULL) : ?>
+						<td class="text-center">Belum</td>
+						<?php endif; ?>
+				<?php if($row['tgl_pengembalian'] != NULL) : ?>
+						<td><?= $row['tgl_pengembalian']; ?></td>
+					<?php endif; ?>
+				<td class="text-center">
 					<a style="color: black" href="<?= base_url('admin/notifikasipeminjaman'); ?>?id=<?= $row['id_peminjaman']; ?>" class="badge badge-warning" >Notifikasi</a> |
 					<a style="color: white" 
 						href="<?= base_url('admin/cetakpeminjamansatuan'); ?>?id=<?= $row['id_peminjaman']; ?>" 
@@ -51,7 +62,7 @@
 				</td>
 			</tr>
 			<!-- endfoeach -->
-			<?php endforeach; ?>
+			<?php $i++; endforeach;  ?>
 		</tbody>
 	  </table>
 	</div>

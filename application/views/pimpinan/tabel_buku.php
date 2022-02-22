@@ -42,7 +42,7 @@
 				<?php if($row['tersedia'] == 0): ?>
 					<td class="text-center">Dipinjam</td>
 					<?php endif; ?>
-				<?php if($row['tersedia'] == 1): ?>
+				<?php if($row['tersedia'] != 0): ?>
 					<td class="text-center">Ada</td>
 					<?php endif; ?>
 			</tr>

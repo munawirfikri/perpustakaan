@@ -92,10 +92,11 @@ class Admin extends CI_Controller
 			$cekbuku = $this->db->query("SELECT * FROM buku WHERE id_buku = '$id_buku'")->first_row();
 			$buku = json_decode(json_encode($cekbuku), True);
 
-			$status = (int) $buku['tersedia'];
+			$stok = (int) $buku['tersedia'];
 			
-			if ($status == 1){
-				$this->db->query("UPDATE buku SET tersedia = 0 WHERE id_buku = '$id_buku'");
+			if ($stok > 0){
+				$qty = $stok - 1;
+				$this->db->query("UPDATE buku SET tersedia = $qty WHERE id_buku = '$id_buku'");
 				$query = $this->db->query("INSERT INTO peminjaman values('','$id_pengunjung', '$id_admin', '$id_buku', 0, '$tgl_peminjaman', '$batas_waktu', NULL);");
 				if($query){
 					redirect ('admin/peminjaman');
@@ -259,13 +260,26 @@ class Admin extends CI_Controller
 		$id = $_GET['id'];
 		$denda = $_GET['denda'];
 
+		$cekbuku = $this->db->query("SELECT buku.tersedia, buku.id_buku FROM peminjaman, buku WHERE peminjaman.id_buku = buku.id_buku AND id_peminjaman = $id")->first_row();
+		$buku = json_decode(json_encode($cekbuku), True);
+		$stok = (int) $buku['tersedia'];
+
+		$kuranginStok = $stok - 1;
+		$tambahinStok = $stok + 1;
+		$id_buku = $buku['id_buku'];
+		
 		if(isset($status) && isset($id)){
 			if($status==0){
 				$this->db->query("UPDATE peminjaman SET status=1, tgl_pengembalian=now() WHERE id_peminjaman = $id");
+				$this->db->query("UPDATE buku SET tersedia = $tambahinStok WHERE id_buku = '$id_buku'");
+
 				if($denda>0){
 					$this->db->query("REPLACE INTO denda VALUE ($id, $denda)");
 				}
 			}else{
+				if($stok != 0){
+					$this->db->query("UPDATE buku SET tersedia = $kuranginStok WHERE id_buku = '$id_buku'");
+				}
 				$this->db->query("UPDATE peminjaman SET status=0, tgl_pengembalian=NULL WHERE id_peminjaman = $id");
 			}
 		redirect('admin/pengembalian');
@@ -348,11 +362,12 @@ class Admin extends CI_Controller
 			$penerbit = $_POST['penerbit'];
 			$tahun_terbit = $_POST['tahun_terbit'];
 			$pengarang = $_POST['pengarang'];
+			$stok = $_POST['stok_buku'];
 
 
 			$this->db->db_debug = false;
 
-			$query = $this->db->query("INSERT INTO buku values('$id_buku','$penerbit', '$tahun_terbit', '$judul', '$pengarang', 1);");
+			$query = $this->db->query("INSERT INTO buku values('$id_buku','$penerbit', '$tahun_terbit', '$judul', '$pengarang', $stok);");
 			
 			if($query){
 				redirect ('admin/buku');

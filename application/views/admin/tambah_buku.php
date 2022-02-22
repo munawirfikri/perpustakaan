@@ -47,6 +47,12 @@
 						<input style="color: #020202;" type="number" min="1900" max="2099" step="1" value="2022" name="tahun_terbit" class="form-control" id="tahun_terbit" placeholder="Masukkan tahun terbit" required >
 						</div>
 					</div>
+					<div class="form-group row">
+						<label style="color: #020202;" for="stok_buku" class="col-sm-2 col-form-label">Stok Buku</label>
+						<div class="col-sm-10">
+						<input style="color: #020202;" type="number" min="1" max="9999" step="1" value="1" name="stok_buku" class="form-control" id="stok_buku" placeholder="Masukkan stok buku" required >
+						</div>
+					</div>
 					<div class="row">
 						<button type="submit" name="submit"  class="mt-3 col-lg-12 text-center btn btn-primary">Tambah</button>
 					</div>

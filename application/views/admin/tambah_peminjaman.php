@@ -20,13 +20,13 @@
 					<div class="form-group row">
 						<label style="color: #020202;" for="idPeminjam" class="col-sm-2 col-form-label">Nomor Induk Siswa</label>
 						<div class="col-sm-10">
-						<input style="color: #020202;" type="text" class="form-control" id="idPeminjam" name="id_peminjam" placeholder="Masukkan Nomor Induk Siswa">
+						<input style="color: #020202;" type="text" class="form-control"  required id="idPeminjam" name="id_peminjam" placeholder="Masukkan Nomor Induk Siswa">
 						</div>
 					</div>
 					<div class="form-group row">
 						<label style="color: #020202;" for="idBuku" class="col-sm-2 col-form-label">ID Buku</label>
 						<div class="col-sm-10">
-						<input style="color: #020202;" type="text" name="id_buku" class="form-control" id="idBuku" placeholder="Masukkan ID buku">
+						<input style="color: #020202;" type="text" name="id_buku" required class="form-control" id="idBuku" placeholder="Masukkan ID buku">
 						</div>
 					</div>
 					<div class="form-group row">

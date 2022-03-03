@@ -64,7 +64,7 @@ class Admin extends CI_Controller
 	{
 		$peminjaman = $this->db->query("SELECT peminjaman.id_peminjaman, pengguna.nama, buku.judul, peminjaman.tgl_peminjaman, peminjaman.batas_waktu, peminjaman.tgl_pengembalian 
         FROM pengguna, buku, peminjaman
-        WHERE peminjaman.id_pengunjung = pengguna.id_pengguna AND peminjaman.id_buku = buku.id_buku
+        WHERE peminjaman.id_pengunjung = pengguna.id_pengguna AND peminjaman.id_buku = buku.id_buku AND peminjaman.status = 0
 		")->result();
 		$rekapan_peminjaman = json_decode(json_encode($peminjaman), True);
 		$data['rekapan_peminjaman'] = $rekapan_peminjaman;
@@ -116,6 +116,15 @@ class Admin extends CI_Controller
 
 	public function hapuspeminjaman(){
 		$id = $_GET['id'];
+
+		$cekbuku = $this->db->query("SELECT buku.tersedia, buku.id_buku FROM peminjaman, buku WHERE peminjaman.id_buku = buku.id_buku AND id_peminjaman = $id")->first_row();
+		$buku = json_decode(json_encode($cekbuku), True);
+		$stok = (int) $buku['tersedia'];
+		
+		$tambahinStok = $stok + 1;
+		$id_buku = $buku['id_buku'];
+		$this->db->query("UPDATE buku SET tersedia = $tambahinStok WHERE id_buku = '$id_buku'");
+
 		$this->db->delete('peminjaman', array('id_peminjaman' => $id)); 
 		redirect ('admin/peminjaman');
 	}

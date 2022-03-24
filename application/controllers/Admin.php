@@ -213,7 +213,7 @@ class Admin extends CI_Controller
 		if(isset($_GET['id'])){
 			$id = $_GET['id'];
 
-			$peminjaman = $this->db->query("SELECT peminjaman.id_peminjaman, pengguna.nama, pengguna.id_kelas, pengguna.id_pengguna, buku.judul, peminjaman.tgl_peminjaman, peminjaman.tgl_pengembalian, peminjaman.batas_waktu, peminjaman.status, walas.nama AS nama_walas
+			$peminjaman = $this->db->query("SELECT peminjaman.id_peminjaman, pengguna.nama, pengguna.id_kelas, pengguna.id_pengguna, buku.judul, peminjaman.tgl_peminjaman, peminjaman.tgl_pengembalian, peminjaman.batas_waktu, peminjaman.status, walas.no_hp, walas.nama AS nama_walas
 			FROM pengguna, buku, peminjaman, kelas, walas
 			WHERE peminjaman.id_pengunjung = pengguna.id_pengguna AND peminjaman.id_buku = buku.id_buku AND pengguna.id_kelas = kelas.id_kelas AND kelas.id_walas = walas.id_walas AND peminjaman.id_peminjaman = $id
 			")->result();
@@ -226,6 +226,7 @@ class Admin extends CI_Controller
 			$walas = $datapeminjaman['nama_walas'];
 			$nis = $datapeminjaman['id_pengguna'];
 			$kelas = $datapeminjaman['id_kelas'];
+			$chat_id = $datapeminjaman['no_hp'];
 			
 
 			$token = "5102679290:AAHdnKILxBvKKN48Rjr2tqS4jbbwzUkNEXM"; // token bot
@@ -240,7 +241,7 @@ class Admin extends CI_Controller
 
 			$data = [
 				'text' => $text,
-				'chat_id' => '-767947488', //contoh bot, group id -442697126
+				'chat_id' => $chat_id, //contoh bot, group id -442697126
 			];
 			
 			file_get_contents("https://api.telegram.org/bot$token/sendMessage?" . http_build_query($data) );	

@@ -8,7 +8,7 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-	<h6 style="color: maroon;" class="m-0 font-weight-bold">Rekapan Buku</h6><a href="<?= base_url('admin/tambahbuku'); ?>">+ Tambah Buku</a>
+	<h6 style="color: maroon;" class="m-0 font-weight-bold">Rekapan Buku</h6>
   </div>
   <div class="card-body">
 	<div class="table-responsive">
@@ -50,9 +50,6 @@
 			<!-- endfoeach -->
 		</tbody>
 	  </table>
-	</div>
-	<div class="row">
-		<a href="<?= base_url('admin/cetakrekapanbuku'); ?>" class="mt-3 col-lg-12 text-center btn btn-primary">Cetak</a>
 	</div>
   </div>
 </div>

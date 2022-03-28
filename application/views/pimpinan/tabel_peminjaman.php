@@ -8,7 +8,7 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-	<h6 style="color: maroon;" class="font-weight-bold">Rekapan Peminjaman</h6><a href="<?= base_url('admin/tambahpeminjaman'); ?>">+ Tambah Data</a>
+	<h6 style="color: maroon;" class="font-weight-bold">Rekapan Peminjaman</h6>
   </div>
   <div class="card-body">
 	<div class="table-responsive">
@@ -21,7 +21,6 @@
 			<th class="text-center">Tgl Peminjaman</th>
 			<th class="text-center">Batas Waktu</th>
 			<th class="text-center">Pengembalian</th>
-			<th class="text-center">Keterangan</th>
 		  </tr>
 		</thead>
 		<tfoot>
@@ -32,7 +31,6 @@
 			<th class="text-center">Tgl Peminjaman</th>
 			<th class="text-center">Batas Waktu</th>
 			<th class="text-center">Pengembalian</th>
-			<th class="text-center">Keterangan</th>
 		  </tr>
 		</tfoot>
 		<tbody>
@@ -50,20 +48,11 @@
 				<?php if($row['tgl_pengembalian'] != NULL) : ?>
 						<td style="text-align: center"><?= $row['tgl_pengembalian']; ?></td>
 					<?php endif; ?>
-				<td class="text-center">
-					<a style="color: white" 
-						href="<?= base_url('admin/cetakpeminjamansatuan'); ?>?id=<?= $row['id_peminjaman']; ?>" 
-						class="btn btn-primary" >Cetak</a>
-				</td>
 			</tr>
 			<!-- endfoeach -->
 			<?php $i++; endforeach;  ?>
 		</tbody>
 	  </table>
-	</div>
-
-	<div class="row">
-		<a href="<?= base_url('admin/cetakrekapanpinjaman'); ?>" class="mt-3 col-lg-12 text-center btn btn-primary">Cetak</a>
 	</div>
   </div>
 </div>

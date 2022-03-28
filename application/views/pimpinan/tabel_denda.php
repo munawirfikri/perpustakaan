@@ -49,9 +49,6 @@
 		</tbody>
 	  </table>
 	</div>
-	<div class="row">
-		<a href="<?= base_url('admin/cetakrekapandenda'); ?>" class="mt-3 col-lg-12 text-center btn btn-primary">Cetak</a>
-	</div>
   </div>
 </div>
 

@@ -63,6 +63,15 @@ class Pimpinan extends CI_Controller
 
 	public function peminjaman()
 	{
+
+		$demoPeminjaman = $this->db->query("SELECT pengguna.id_kelas, COUNT(*) as nilai
+		FROM pengguna, peminjaman
+		WHERE pengguna.id_pengguna = peminjaman.id_pengunjung
+		GROUP BY pengguna.id_kelas")->result();
+		$demoPeminjaman = json_decode(json_encode($demoPeminjaman), True);
+		$data['demo_peminjaman'] = $demoPeminjaman;
+
+
 		$peminjaman = $this->db->query("SELECT peminjaman.id_peminjaman, pengguna.nama, buku.judul, peminjaman.tgl_peminjaman, peminjaman.batas_waktu, peminjaman.tgl_pengembalian 
         FROM pengguna, buku, peminjaman
         WHERE peminjaman.id_pengunjung = pengguna.id_pengguna AND peminjaman.id_buku = buku.id_buku
@@ -242,6 +251,13 @@ class Pimpinan extends CI_Controller
 
 	public function pengembalian()
 	{
+		$demoPeminjaman = $this->db->query("SELECT peminjaman.status, COUNT(*) as jumlah
+        FROM peminjaman
+        GROUP BY peminjaman.status")->result();
+		$demoPeminjaman = json_decode(json_encode($demoPeminjaman), True);
+		$data['demo_peminjaman'] = $demoPeminjaman;
+
+
 		$peminjaman = $this->db->query("SELECT peminjaman.id_peminjaman, pengguna.nama, buku.judul, peminjaman.tgl_peminjaman, peminjaman.tgl_pengembalian, peminjaman.status, peminjaman.batas_waktu 
         FROM pengguna, buku, peminjaman
         WHERE peminjaman.id_pengunjung = pengguna.id_pengguna AND peminjaman.id_buku = buku.id_buku
@@ -282,6 +298,14 @@ class Pimpinan extends CI_Controller
 
 	public function denda()
 	{
+
+		$demoPeminjaman = $this->db->query("SELECT pengguna.id_kelas, COUNT(*) as jumlah
+		FROM pengguna, peminjaman, denda
+		WHERE pengguna.id_pengguna = peminjaman.id_pengunjung AND peminjaman.id_peminjaman = denda.id_peminjaman")->result();
+		$demoPeminjaman = json_decode(json_encode($demoPeminjaman), True);
+		$data['demo_peminjaman'] = $demoPeminjaman;
+
+
 		$denda = $this->db->query("SELECT pengguna.nama, buku.judul, denda.jlh_denda, peminjaman.batas_waktu, peminjaman.tgl_pengembalian FROM denda, pengguna, buku, peminjaman WHERE pengguna.id_pengguna = peminjaman.id_pengunjung AND buku.id_buku = peminjaman.id_buku AND denda.id_peminjaman = peminjaman.id_peminjaman")->result();
 		$rekapan_denda = json_decode(json_encode($denda), True);
 		$data['denda'] = $rekapan_denda;
@@ -327,6 +351,14 @@ class Pimpinan extends CI_Controller
 
 	public function buku()
 	{
+		
+		$demoPeminjaman = $this->db->query("SELECT buku.thn_terbit, COUNT(*) as jumlah
+		FROM buku
+		GROUP BY buku.thn_terbit")->result();
+		$demoPeminjaman = json_decode(json_encode($demoPeminjaman), True);
+		$data['demo_peminjaman'] = $demoPeminjaman;
+
+
 		$buku = $this->db->query("SELECT * FROM buku")->result();
 		$rekapan_buku = json_decode(json_encode($buku), True);
 		$data['buku'] = $rekapan_buku;

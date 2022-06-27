@@ -15,4 +15,18 @@ class Pengunjung extends CI_Controller
 		$this->load->view('template/footer');
 	}
 
+	public function riwayat()
+	{
+		$id = $_SESSION['id_pengguna'];
+
+		$riwayat = $this->db->query("SELECT buku.judul, peminjaman.status, peminjaman.tgl_peminjaman, peminjaman.tgl_pengembalian
+		FROM peminjaman, buku WHERE id_pengunjung=$id AND buku.id_buku = peminjaman.id_buku;")->result();
+		$riwayat_pengguna = json_decode(json_encode($riwayat), True);
+		$data['riwayat'] = $riwayat_pengguna;
+
+		$this->load->view('template/header_pengunjung');
+		$this->load->view('pengunjung/riwayat', $data);
+		$this->load->view('template/footer');
+	}
+
 }

@@ -61,6 +61,21 @@
 			<span>Buku</span></a>
 		</li>
 
+				      <!-- Divider -->
+							<hr class="sidebar-divider my-0">
+
+<!-- Nav Item - Dashboard -->
+			<li class="nav-item"
+	<?php if($url == base_url('pengunjung/riwayat')) { ?>
+	style="background-color: salmon;"			
+	<?php } ?>
+	>
+
+<a class="text-center nav-link" href="<?= base_url('pengunjung/riwayat'); ?>">
+	<span>Riwayat</span></a>
+</li>
+
+
 		<!-- Divider -->
 		<hr class="sidebar-divider">
 
